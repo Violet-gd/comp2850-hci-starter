@@ -95,4 +95,11 @@ object TaskRepository {
     private fun persist() {
         file.writeText("id,title\n" + tasks.joinToString("\n") { "${it.id},${it.title}" })
     }
+
+    fun find(id: Int): Task? = tasks.find { it.id == id }
+
+    fun update(task: Task) {
+        tasks.find { it.id == task.id }?.let { it.title = task.title }
+        persist()
+    }
 }

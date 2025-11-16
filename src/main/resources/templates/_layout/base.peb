@@ -56,5 +56,12 @@
             </small>
         </p>
     </footer>
+    <style>
+    button[type="submit"],
+    button {
+  color: #ffffff; !important; /* 7:1 contrast (AAA) */
+}
+</style>
+
 </body>
 </html>
