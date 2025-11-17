@@ -1,4 +1,1 @@
-id,title,job_story,need,type,severity,inclusion_risk,evidence,notes
-1,Search by tag,JS‑1,filter tasks,functional,High,Motor: small targets,Time to complete (s), 
-2,Announce results,JS‑1,status,Medium,Screen reader: status,SR announces count, 
-3,Keyboard order,JS‑2,accessibility,High,Keyboard only path,Steps (no traps), 
+id,title,story_ref,story_type,need,type,severity,inclusion_risk,evidence,notes,candidate_fix
