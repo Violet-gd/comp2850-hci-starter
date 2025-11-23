@@ -26,6 +26,7 @@ dependencies {
     implementation("io.ktor:ktor-server-status-pages-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-call-logging-jvm:$ktorVersion")
 
+
     // Pebble templating
     implementation("io.pebbletemplates:pebble:$pebbleVersion")
 

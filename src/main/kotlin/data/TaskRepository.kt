@@ -102,4 +102,31 @@ object TaskRepository {
         tasks.find { it.id == task.id }?.let { it.title = task.title }
         persist()
     }
+
+    /**
+     * Search tasks by title and return paginated results.
+     */
+    fun search(query: String, page: Int, pageSize: Int = 10): Page<Task> {
+        val filtered = if (query.isBlank()) {
+            all()
+        } else {
+            all().filter { task ->
+                task.title.contains(query, ignoreCase = true)
+            }
+        }
+
+        val totalItems = filtered.size
+        val totalPages = if (totalItems == 0) 1 else (totalItems + pageSize - 1) / pageSize
+        val validPage = page.coerceIn(1, totalPages)
+        val startIndex = (validPage - 1) * pageSize
+        val pageItems = filtered.drop(startIndex).take(pageSize)
+
+        return Page(
+            items = pageItems,
+            page = validPage,
+            pages = totalPages,
+            total = totalItems
+        )
+    }
+
 }
