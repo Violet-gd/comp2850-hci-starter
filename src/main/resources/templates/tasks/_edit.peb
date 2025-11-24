@@ -1,0 +1,27 @@
+<li id="task-{{ task.id }}" class="task-edit">
+  <form action="/tasks/{{ task.id }}/edit" method="post"
+        hx-post="/tasks/{{ task.id }}/edit"
+        hx-target="#task-{{ task.id }}"
+        hx-swap="outerHTML">
+
+    <label for="title-{{ task.id }}">Title</label>
+    <input type="text"
+           id="title-{{ task.id }}"
+           name="title"
+           value="{{ task.title }}"
+           required
+           autofocus
+           {% if error %}aria-invalid="true" aria-describedby="error-{{ task.id }}"{% endif %}>
+
+    {% if error %}
+    <p id="error-{{ task.id }}" class="error-message" role="alert">{{ error }}</p>
+    {% endif %}
+
+    <button type="submit">Save</button>
+    <a href="/tasks"
+       hx-get="/tasks/{{ task.id }}/view"
+       hx-target="#task-{{ task.id }}"
+       hx-swap="outerHTML"
+       role="button">Cancel</a>
+  </form>
+</li>
